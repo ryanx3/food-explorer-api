@@ -7,8 +7,8 @@ const app = express();
 app.use(express.json()); //Para a api saber qual o padrão vamos utilizar para enviar infos que no caso é o json.
 
 const routes = require("./routes");
-const database = require("../src/database/sqlite");
-database()
+const migrationsRun = require("../src/database/sqlite/migration");
+migrationsRun();
 
 app.use(routes);
 app.use((error, req, res, next) => {
