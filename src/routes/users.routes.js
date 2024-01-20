@@ -9,6 +9,8 @@ function myMiddleware(req, res, next) {
   next();
 }
 
-usersRouter.post("/", myMiddleware, usersController.create);
+usersRouter.use(myMiddleware);
+usersRouter.post("/", usersController.create);
+usersRouter.put("/:id", usersController.update);
 
-module.exports = usersRouter
+module.exports = usersRouter  
